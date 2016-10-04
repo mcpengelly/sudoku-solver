@@ -17,23 +17,35 @@ module.exports = {
 
 	/* reads a board and turns it into viable input */
 	parseBoard: function(board){
-		var bRows = board.split('');
-		console.log(bRows);
-		// var res = bRows.split('');
-		return bRows;
+		var rows = board.split('\n');
+		var parsedBoard = rows.map(function(row){
+			return row.split('').map(function(element){
+				return +element;
+			});
+		});
+		return parsedBoard;
 	},
 
 	//checks for empty squares in the sudoku
-	checkEmptySquares: function(){
-
+	checkEmptySquares: function(board){
+		console.log(checkEmptySquares)
+		// var parsedBoard = this.parseBoard(board);
+		//iterate over the entire 2 dimensional array looking for empty squares
+		for(var row = 0; row <= board.length; row++){
+			for(var i = 0; i <= row.length; i++){
+				console.log(i)
+			}
+		}
 	},
 
 	//checks whether the value works for the containing square
 	checkValue: function(){
 
+
 	},
 
 	//checks all squares in the current column
+	//takes an index of the grid and checks its column peers
 	checkColumns: function(){
 
 	},

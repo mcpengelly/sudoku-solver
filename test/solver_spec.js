@@ -13,11 +13,11 @@ describe('sudoku solver', function(){
 							'100804020\n' +
 							'706000810\n' +
 							'300090000';
-	var parsedBoard;
+	var parsedBoard, expectedBoard, emptyPositions;
 
 	describe('function parseBoard', function(){
 		it('should parse a string of input numbers into an array', function(){
-			var expectedBoard = [
+			expectedBoard = [
 				[0, 9, 0, 0, 0, 0, 0, 0, 6],
 				[0, 0, 0, 9, 6, 0, 4, 8, 5],
 				[0, 0, 0, 5, 8, 1, 0, 0, 0],
@@ -30,9 +30,37 @@ describe('sudoku solver', function(){
 			];
 
 			parsedBoard = solver.parseBoard(board);
-			expect(parsedBoard.length).to.equal(9);
-			expect(parsedBoard[0].length).to.equal(9);
-			expect(parsedBoard).to.equal(expectedBoard);
+			expect(parsedBoard.length).to.equal(9); //grid should be 9 units long
+			expect(parsedBoard[0].length).to.equal(9); //grid should be 9 units short
+			expect(parsedBoard).to.eql(expectedBoard);
+		});
+	});
+
+	describe('function checkEmptySquares', function(){
+		it('should return all indicies of empty squares in a parsedBoard', function(){
+			emptyPositions = solver.checkEmptySquares(parsedBoard);
+			var expectedEmptySquares = [
+
+			];
+			expect(emptyPositions.length).to.equal(51); //there should be 51 empty spaces
+			// expect(emptyPositions[0].length).to.equal(2);
+			expect(emptyPositions).to.eql(expectedEmptySquares);
+		});
+	});
+
+	describe('function checkColumns', function(){
+		it('should checksquares in the column and return the remaining options', function(){
+			var expectedColumnOptions = [];
+			var options = solver.checkColumns(/*args*/);
+			expect(options).to.eql(expectedColumnOptions);
+		});
+	});
+
+	describe('function checkColumns', function(){
+		it('should checksquares in the row and return the remaining options', function(){
+			var expectedRowOptions = [];
+			var options = solver.checkRows(/*args*/);
+			expect(options).to.eql(expectedRowOptions);
 		});
 	});
 
