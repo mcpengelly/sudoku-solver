@@ -27,20 +27,22 @@ module.exports = {
 	},
 
 	//checks for empty squares in the sudoku
-	checkEmptySquares: function(board){
-		console.log(checkEmptySquares)
-		// var parsedBoard = this.parseBoard(board);
-		//iterate over the entire 2 dimensional array looking for empty squares
-		for(var row = 0; row <= board.length; row++){
-			for(var i = 0; i <= row.length; i++){
-				console.log(i)
-			}
-		}
+	checkEmptySquares: function(pBoard){
+		var emptySquares = []; // array of 2 element arrays TODO:use objects instead?
+		//iterate over matrix looking for empty squares
+		pBoard.forEach(function(row, rIndex){
+			row.forEach(function(elem, index){
+				if(elem === 0){
+					emptySquares.push([rIndex, index]); //
+				}
+			});
+		});
+
+		return emptySquares;
 	},
 
 	//checks whether the value works for the containing square
 	checkValue: function(){
-
 
 	},
 
