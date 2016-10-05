@@ -16,7 +16,7 @@ describe('sudoku solver', function(){
 	var parsedBoard, expectedBoard, emptyPositions;
 
 	describe('function parseBoard', function(){
-		it('should parse a string of input numbers into an array', function(){
+		it('should parse a sudoku board into a 2D array', function(){
 			expectedBoard = [
 				[0, 9, 0, 0, 0, 0, 0, 0, 6],
 				[0, 0, 0, 9, 6, 0, 4, 8, 5],
@@ -54,18 +54,28 @@ describe('sudoku solver', function(){
 	});
 
 	describe('function checkColumns', function(){
-		it('should checksquares in the column and return the remaining options', function(){
-			var expectedColumnOptions = [];
-			var options = solver.checkColumns(/*args*/);
-			expect(options).to.eql(expectedColumnOptions);
+		it('should check if the value can be input in the column', function(){
+			var p1ExpectedColumnOptions = [];
+			var p2ExpectedColumnOptions = [];
+
+			var p1options = solver.checkColumns(p1, parsedBoard);
+			// var p2options = solver.checkColumns(p2, parsedBoard);
+			expect(solver.checkColumns(parseBoard, ))
+			expect()
 		});
 	});
 
 	describe('function checkRows', function(){
-		it('should checksquares in the row and return the remaining options', function(){
-			var expectedRowOptions = [];
-			var options = solver.checkRows(/*args*/);
-			expect(options).to.eql(expectedRowOptions);
+		it('should check if the value can be input in the column', function(){
+			var p1ExpectedRowOptions = [];
+			var p2ExpectedRowOptions = [];
+
+			var p1 = [0, 1];// 9
+			var p2 = [8, 8];// 1
+			var p1options = solver.checkRows(p1, parsedBoard);
+			// var p2options = solver.checkRows(p2, parsedBoard);
+			expect()
+			expect()
 		});
 	});
 

@@ -33,7 +33,7 @@ module.exports = {
 		pBoard.forEach(function(row, rIndex){
 			row.forEach(function(elem, index){
 				if(elem === 0){
-					emptySquares.push([rIndex, index]); //
+					emptySquares.push([rIndex, index]);
 				}
 			});
 		});
@@ -43,28 +43,35 @@ module.exports = {
 
 	//checks whether the value works for the containing square
 	checkValue: function(){
-
-	},
-
-	//checks all squares in the current column
-	//takes an index of the grid and checks its column peers
-	checkColumns: function(){
-
+		//calls the other check functions
 	},
 
 	//checks all squares in the current row
-	checkRows: function(){
+	checkRows: function(pBoard, row, value){
+		// console.log(point)
+		var row = point[0];
+	},
 
+	//checks all squares in the current column
+	//takes a point on the grid and checks its column peers
+	checkColumns: function(pBoard, column, value){
+		pBoard.forEach(function(row, rIndex){
+			console.log(row[column]);
+			// if(row[column])
+		});
 	},
 
 	//checks all squares in the current grid/region
-	checkGrid: function(){
-
+	checkGrid: function(index){
+		//find which region the index belongs to
 	},
 
 	//solves the grid/puzzle portion of the sudoku
 	solvePuzzle: function(){
-
+		// var empties = checkEmptySquares(this.board);
+		// empties.forEach(function(emptySquare){
+		// 	checkValue();
+		// });
 	},
 
 	//does everything related to the sudoku puzzle
