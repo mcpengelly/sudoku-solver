@@ -55,27 +55,15 @@ describe('sudoku solver', function(){
 
 	describe('function checkColumns', function(){
 		it('should check if the value can be input in the column', function(){
-			var p1ExpectedColumnOptions = [];
-			var p2ExpectedColumnOptions = [];
-
-			var p1options = solver.checkColumns(p1, parsedBoard);
-			// var p2options = solver.checkColumns(p2, parsedBoard);
-			expect(solver.checkColumns(parseBoard, ))
-			expect()
+			expect(solver.checkColumns(parsedBoard, 0, 2)).to.be.ok;
+			expect(solver.checkColumns(parsedBoard, 2, 7)).to.be.not.ok;
 		});
 	});
 
 	describe('function checkRows', function(){
 		it('should check if the value can be input in the column', function(){
-			var p1ExpectedRowOptions = [];
-			var p2ExpectedRowOptions = [];
-
-			var p1 = [0, 1];// 9
-			var p2 = [8, 8];// 1
-			var p1options = solver.checkRows(p1, parsedBoard);
-			// var p2options = solver.checkRows(p2, parsedBoard);
-			expect()
-			expect()
+			// expect(solver.checkColumns(parsedBoard, 0, 2)).to.be.ok;
+			// expect(solver.checkColumns(parsedBoard, 2, 7)).to.be.not.ok;
 		});
 	});
 

@@ -2,7 +2,7 @@
 /* board of numbers "0"s count as empty spots*/
 
 //given an incomplete sudoku board, how would you turn it into a complete one using a computer?
-
+var _ = require('lodash');
 module.exports = {
 
 	board: '090000006\n' +
@@ -48,22 +48,38 @@ module.exports = {
 
 	//checks all squares in the current row
 	checkRows: function(pBoard, row, value){
-		// console.log(point)
-		var row = point[0];
+		var rowNumbers = [];
+		// pBoard.forEach(function(col, rIndex){
+		// 	// if(col[row] !== 0){
+		// 	// 	rowNumbers.push(col[row]);
+		// 	// }
+		// });
+		if(_.includes(rowNumbers, value)){
+			return false;
+		} else {
+			return true;
+		}
 	},
 
 	//checks all squares in the current column
 	//takes a point on the grid and checks its column peers
 	checkColumns: function(pBoard, column, value){
+		var columnNumbers = [];
 		pBoard.forEach(function(row, rIndex){
-			console.log(row[column]);
-			// if(row[column])
+			if(row[column] !== 0){
+				columnNumbers.push(row[column]);
+			}
 		});
+		if(_.includes(columnNumbers, value)){
+			return false;
+		} else {
+			return true;
+		}
 	},
 
 	//checks all squares in the current grid/region
 	checkGrid: function(index){
-		//find which region the index belongs to
+
 	},
 
 	//solves the grid/puzzle portion of the sudoku
