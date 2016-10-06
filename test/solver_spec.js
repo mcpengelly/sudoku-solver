@@ -62,8 +62,8 @@ describe('sudoku solver', function(){
 
 	describe('function checkRows', function(){
 		it('should check if the value can be input in the column', function(){
-			// expect(solver.checkColumns(parsedBoard, 0, 2)).to.be.ok;
-			// expect(solver.checkColumns(parsedBoard, 2, 7)).to.be.not.ok;
+			expect(solver.checkRows(parsedBoard, 0, 3)).to.be.ok;
+			expect(solver.checkRows(parsedBoard, 0, 6)).to.be.not.ok;
 		});
 	});
 

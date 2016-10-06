@@ -49,11 +49,11 @@ module.exports = {
 	//checks all squares in the current row
 	checkRows: function(pBoard, row, value){
 		var rowNumbers = [];
-		// pBoard.forEach(function(col, rIndex){
-		// 	// if(col[row] !== 0){
-		// 	// 	rowNumbers.push(col[row]);
-		// 	// }
-		// });
+		for(var i = 0; i < pBoard.length; i++){
+			if(pBoard[row][i] !== 0){
+				rowNumbers.push(pBoard[row][i]);
+			}
+		}
 		if(_.includes(rowNumbers, value)){
 			return false;
 		} else {
@@ -78,7 +78,7 @@ module.exports = {
 	},
 
 	//checks all squares in the current grid/region
-	checkGrid: function(index){
+	check3x3Grid: function(index){
 
 	},
 
