@@ -48,38 +48,29 @@ module.exports = {
 
 	//checks all squares in the current row
 	checkRows: function(pBoard, row, value){
-		var rowNumbers = [];
+		var match = false;
 		for(var i = 0; i < pBoard.length; i++){
-			if(pBoard[row][i] !== 0){
-				rowNumbers.push(pBoard[row][i]);
+			if(value === pBoard[row][i]){
+				match = true;
 			}
 		}
-		if(_.includes(rowNumbers, value)){
-			return false;
-		} else {
-			return true;
-		}
+		return match;
 	},
 
 	//checks all squares in the current column
-	//takes a point on the grid and checks its column peers
 	checkColumns: function(pBoard, column, value){
-		var columnNumbers = [];
-		pBoard.forEach(function(row, rIndex){
-			if(row[column] !== 0){
-				columnNumbers.push(row[column]);
+		var match = false;
+		for(var i = 0; i < pBoard[0].length; i++){
+			if(value === pBoard[i][column]){
+				match = true;
 			}
-		});
-		if(_.includes(columnNumbers, value)){
-			return false;
-		} else {
-			return true;
 		}
+		return match;
 	},
 
 	//checks all squares in the current grid/region
-	check3x3Grid: function(index){
-
+	check3x3Grid: function(pBoard, row, column, value){
+		//how to check if the squares are within a specific region?
 	},
 
 	//solves the grid/puzzle portion of the sudoku
