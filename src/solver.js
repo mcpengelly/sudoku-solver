@@ -72,18 +72,7 @@ module.exports = {
 	check3x3Grid: function(pBoard, row, column, value){
 		//how to check if the squares are within a specific region?
 		//then checks if it can be input into that region by iterating through it
-		var region = 0;
-		if(row <= 2 && column <= 2) {
-			//belongs to the first 3x3 grid
-			region = 1;
-		}
-
-		if(region === 1){
-			for(var i = 0; i <= 2; i++){
-				// console.log(pBoard[row][i]);
-				console.log(pBoard[i][column]);
-			}
-		}
+		while(column <= )
 	},
 
 	//solves the grid/puzzle portion of the sudoku
