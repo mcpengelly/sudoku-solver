@@ -42,8 +42,15 @@ module.exports = {
 	},
 
 	//checks whether the value works for the containing square
-	checkValue: function(){
+	checkValue: function(pBoard, row, column, value){
 		//calls the other check functions
+		if(this.checkRows(pBoard, row, value) &&
+		 this.checkColumns(pBoard, column, value) &&
+		 this.check3x3Grid(pBoard, row, column, value)){
+			return true;
+		} else {
+			return false;
+		}
 	},
 
 	//checks all squares in the current row
@@ -97,16 +104,56 @@ module.exports = {
 	},
 
 	//solves the grid/puzzle portion of the sudoku
-	solvePuzzle: function(){
-		// var empties = checkEmptySquares(this.board);
-		// empties.forEach(function(emptySquare){
-		// 	checkValue();
-		// });
+	solvePuzzle: function(pBoard, emptyPositions){
+		// Variables to track our position in the solver
+		var limit = 9;
+		var i, row, column, value, found;
+		for(i = 0; i < emptyPositions.length;) {
+			row = emptyPositions[i][0];
+			column = emptyPositions[i][1];
+			// Try the next value
+			value = pBoard[row][column] + 1;
+			// Was a valid number found?
+			found = false;
+			// Keep trying new values until either the limit
+			// was reached or a valid value was found
+			while(!found && value <= limit) {
+				// If a valid value is found, mark found true,
+				// set the position to the value, and move to the
+				// next position
+				if(this.checkValue(pBoard, column, row, value)) {
+					found = true;
+					pBoard[row][column] = value;
+					i++;
+				}
+				// Otherwise, try the next value
+				else {
+					value++;
+				}
+			}
+			// If no valid value was found and the limit was
+			// reached, move back to the previous position
+			if(!found) {
+				pBoard[row][column] = 0;
+				i--;
+			}
+		}
+
+		// A solution was found! Log it
+		pBoard.forEach(function(row) {
+			console.log(row.join());
+		});
+
+		// return the solution
+		return pBoard;
 	},
 
 	//does everything related to the sudoku puzzle
-	solveSudoku: function(){
+	solveSudoku: function(board){
+		var parsedBoard = this.parseBoard(board);
+		var emptySquares = this.checkEmptySquares(parsedBoard);
 
+		return this.solvePuzzle(parsedBoard, emptySquares);
 	}
 }
 
