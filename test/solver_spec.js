@@ -70,9 +70,9 @@ describe('sudoku solver', function(){
 	describe('function check3x3Grid', function(){
 		it('should check if the value can be input in the 3x3 grid/region', function(){
 			expect(solver.check3x3Grid(parsedBoard, 0, 0, 1)).to.be.ok;
-			expect(solver.check3x3Grid(parsedBoard, 0, 0, 1)).to.not.be.ok;
-			// expect(solver.check3x3Grid(parsedBoard, 6, 6, 5)).to.be.ok;
-			// expect(solver.check3x3Grid(parsedBoard, 6, 6, 1)).to.not.be.ok;
+			expect(solver.check3x3Grid(parsedBoard, 0, 0, 9)).to.not.be.ok;
+			expect(solver.check3x3Grid(parsedBoard, 6, 6, 5)).to.be.ok;
+			expect(solver.check3x3Grid(parsedBoard, 6, 6, 1)).to.not.be.ok;
 		});
 	});
 

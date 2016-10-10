@@ -70,9 +70,30 @@ module.exports = {
 
 	//checks all squares in the current grid/region
 	check3x3Grid: function(pBoard, row, column, value){
-		//how to check if the squares are within a specific region?
-		//then checks if it can be input into that region by iterating through it
-		while(column <= )
+		var columnCorner = 0;
+		var rowCorner = 0;
+		var squareSize = 3;
+
+		//setup the corners for checking 3x3 grid
+		while(column >= columnCorner + squareSize){
+			columnCorner += squareSize;
+		}
+
+		while(row >= rowCorner + squareSize){
+			rowCorner += squareSize;
+		}
+
+		var canInsert = true;
+		// Iterate through each row
+		for(var i = rowCorner; i < rowCorner + squareSize; i++) {
+			// Iterate through each column
+			for(var j = columnCorner; j < columnCorner + squareSize; j++) {
+				if(pBoard[i][j] === value){
+					canInsert = false;
+				}
+			}
+		}
+		return canInsert;
 	},
 
 	//solves the grid/puzzle portion of the sudoku
