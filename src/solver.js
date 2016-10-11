@@ -121,7 +121,7 @@ module.exports = {
 				// If a valid value is found, mark found true,
 				// set the position to the value, and move to the
 				// next position
-				if(this.checkValue(pBoard, column, row, value)) {
+				if(this.checkValue(pBoard, row, column, value)) {
 					found = true;
 					pBoard[row][column] = value;
 					i++;
