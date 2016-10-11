@@ -1,0 +1,26 @@
+{
+  "name": "s",
+  "version": "1.0.0",
+  "description": "s",
+  "main": "solver.js",
+  "scripts": {
+    "test": "mocha ./test/solver_spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcpengelly/s.git"
+  },
+  "author": "mpen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcpengelly/s/issues"
+  },
+  "homepage": "https://github.com/mcpengelly/s#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.0"
+  },
+  "dependencies": {
+    "lodash": "^4.16.3"
+  }
+}
