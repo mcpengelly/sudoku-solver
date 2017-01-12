@@ -4,7 +4,8 @@
   "description": "s",
   "main": "solver.js",
   "scripts": {
-    "test": "mocha ./test/solver_spec.js"
+    "test": "mocha ./test/solver_spec.js",
+    "start": "node ./src/runner.js"
   },
   "repository": {
     "type": "git",
