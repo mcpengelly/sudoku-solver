@@ -1,10 +1,10 @@
-// some sudoku solver thing
-/* board of numbers "0"s count as empty spots*/
+// board of numbers, "0"s count as empty squares
 
-//given an incomplete sudoku board, how would you turn it into a complete one using a computer?
+// Given an incomplete sudoku board, how would you turn it into a complete one using a computer?
 var _ = require('lodash');
 module.exports = {
 
+	//sample board
 	board: '090000006\n' +
 				 '000960485\n' +
 				 '000581000\n' +
@@ -15,7 +15,11 @@ module.exports = {
 				 '706000810\n' +
 				 '300090000',
 
-	/* reads a board and turns it into viable input */
+	/**
+	 * parseBoard: reads a board and turns it into viable input
+	 * @param  {String} board string representation of a sudoku board, rows delimited by newlines
+	 * @return {2D Array}       2D Array representation of the input sudoku string
+	 */
 	parseBoard: function(board){
 		var rows = board.split('\n');
 		var parsedBoard = rows.map(function(row){
@@ -26,7 +30,12 @@ module.exports = {
 		return parsedBoard;
 	},
 
-	//checks for empty squares in the sudoku
+	/**
+	 * checkEmptySquares: checks for empty squares in the sudoku board returns a list them all
+	 * @param  {2D Array} pBoard [description]
+	 * @return {2D Array}        [2D array representing all the empty spaces
+	 * ie: [[row, column], [row, column]]
+	 */
 	checkEmptySquares: function(pBoard){
 		var emptySquares = []; // array of 2 element arrays TODO:use objects instead?
 		//iterate over matrix looking for empty squares
@@ -41,9 +50,16 @@ module.exports = {
 		return emptySquares;
 	},
 
-	//checks whether the value works for the containing square
+	/**
+	 * checkValue: checks whether the value fits into the desired square
+	 * @param  {2D Array} pBoard [the 2D Array board]
+	 * @param  {integer} row    [which row to check if value can fit in]
+	 * @param  {integer} column [which column to check if value can fit in]
+	 * @param  {integer} value  [value to to be input the row, column square]
+	 * @return {boolean}        [true if the value can be input in the square, otherwise false]
+	 */
 	checkValue: function(pBoard, row, column, value){
-		//calls the other check functions
+		// calls the other check functions
 		if(this.checkRows(pBoard, row, value) &&
 		 this.checkColumns(pBoard, column, value) &&
 		 this.check3x3Grid(pBoard, row, column, value)){
@@ -53,7 +69,14 @@ module.exports = {
 		}
 	},
 
-	//checks all squares in the current row
+
+	/**
+	 * checkRows: checks all squares in the current row
+	 * @param  {2D Array} pBoard [the sudoku board being solved]
+	 * @param  {integer} row    [row to check]
+	 * @param  {integer} value  [value to try and fit into row]
+	 * @return {boolean}       [true if the value can fit, otherwise false]
+	 */
 	checkRows: function(pBoard, row, value){
 		var canInsert = true;
 		for(var i = 0; i < pBoard.length; i++){
@@ -64,7 +87,13 @@ module.exports = {
 		return canInsert;
 	},
 
-	//checks all squares in the current column
+	/**
+	 * checkRows: checks all squares in the current column
+	 * @param  {2D Array} pBoard [the sudoku board being solved]
+	 * @param  {integer} column    [row to check]
+	 * @param  {integer} value  [value to try and fit into column]
+	 * @return {boolean}       [true if the value can fit, otherwise false]
+	 */
 	checkColumns: function(pBoard, column, value){
 		var canInsert = true;
 		for(var i = 0; i < pBoard[0].length; i++){
@@ -103,22 +132,27 @@ module.exports = {
 		return canInsert;
 	},
 
-	//solves the grid/puzzle portion of the sudoku
+	/**
+	 * solvePuzzle: solves the grid/puzzle portion of the sudoku
+	 * @param  {2D Array} pBoard         [the sudoku for solving]
+	 * @param  {2D Array} emptyPositions [2D array of the empty squares in the puzzle]
+	 * @return {2D Array}                [the solved sudoku board]
+	 */
 	solvePuzzle: function(pBoard, emptyPositions){
-		// Variables to track our position in the solver
+		// variables to track our position in the solver
 		var limit = 9;
 		var i, row, column, value, found;
 		for(i = 0; i < emptyPositions.length;) {
 			row = emptyPositions[i][0];
 			column = emptyPositions[i][1];
-			// Try the next value
+			// try the next value
 			value = pBoard[row][column] + 1;
-			// Was a valid number found?
+			// was a valid number found?
 			found = false;
-			// Keep trying new values until either the limit
+			// keep trying new values until either the limit
 			// was reached or a valid value was found
 			while(!found && value <= limit) {
-				// If a valid value is found, mark found true,
+				// if a valid value is found, mark found true,
 				// set the position to the value, and move to the
 				// next position
 				if(this.checkValue(pBoard, row, column, value)) {
@@ -126,12 +160,12 @@ module.exports = {
 					pBoard[row][column] = value;
 					i++;
 				}
-				// Otherwise, try the next value
+				// otherwise, try the next value
 				else {
 					value++;
 				}
 			}
-			// If no valid value was found and the limit was
+			// if no valid value was found and the limit was
 			// reached, move back to the previous position
 			if(!found) {
 				pBoard[row][column] = 0;
@@ -139,7 +173,7 @@ module.exports = {
 			}
 		}
 
-		// A solution was found! Log it
+		// solution was found log it
 		pBoard.forEach(function(row) {
 			console.log(row.join());
 		});
