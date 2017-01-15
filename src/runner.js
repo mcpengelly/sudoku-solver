@@ -11,6 +11,18 @@ var board = '090000006\n' +
 						'706000810\n' +
 						'300090000';
 
+
+var board2 ='020080370\n' +
+						'000900004\n' +
+						'406002000\n' +
+						'269800100\n' +
+						'153409786\n' +
+						'007006529\n' +
+						'000700902\n' +
+						'600005000\n' +
+						'098040030';
+
 console.log('INITIAL BOARD: \n' + board + '\n');
 console.log('SOLUTION:');
-var solution = solver.solveSudoku(board);
+solver.solveSudoku(board);
+
