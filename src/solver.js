@@ -173,7 +173,7 @@ module.exports = {
 			}
 		}
 
-		// solution was found log it
+		// show solution
 		pBoard.forEach(function(row) {
 			console.log(row.join());
 		});
